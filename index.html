@@ -1,428 +1,686 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asrorbek Botirov - Frontend Dasturchi Portfeli</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* --- Umumiy Stil --- */
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #343a40;
-            --background-color: #f8f9fa;
-            --text-color: #212529;
-            --light-gray: #e9ecef;
-            --white: #ffffff;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            --border-radius: 8px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asrorbek Botirov | Full Stack Developer</title>
+  <meta name="description" content="Professional portfolio of Asrorbek Botirov - Full Stack Developer specializing in React, Node.js, and modern web technologies">
+  <meta name="author" content="Asrorbek Botirov">
+  
+  <meta property="og:title" content="Asrorbek Botirov | Full Stack Developer">
+  <meta property="og:description" content="Professional portfolio of Asrorbek Botirov - Full Stack Developer">
+  <meta property="og:type" content="website">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    :root {
+      --bg: hsl(220, 15%, 8%);
+      --fg: hsl(210, 40%, 98%);
+      --card: hsl(220, 13%, 12%);
+      --border: hsl(220, 13%, 18%);
+      --muted: hsl(215, 20.2%, 65.1%);
+      --primary: hsl(189, 94%, 55%);
+      --primary-glow: hsl(189, 94%, 70%);
+      --accent: hsl(267, 84%, 65%);
+      --shadow-glow: 0 0 40px hsl(189 94% 55% / 0.3);
+      --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
 
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        section:last-of-type {
-            border-bottom: none;
-        }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-            color: var(--secondary-color);
-        }
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--bg), var(--card));
+    }
 
-        /* --- Header --- */
-        header {
-            background-color: var(--white);
-            padding: 80px 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
 
-        .header-content h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.2;
+    }
 
-        .header-content p {
-            font-size: 1.2rem;
-            color: #6c757d;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
+    .hero-blob-1 {
+      top: 25%;
+      left: 25%;
+      width: 384px;
+      height: 384px;
+      background: var(--primary);
+      animation: float 6s ease-in-out infinite;
+    }
 
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+    .hero-blob-2 {
+      bottom: 25%;
+      right: 25%;
+      width: 384px;
+      height: 384px;
+      background: var(--accent);
+      animation: float 6s ease-in-out infinite;
+      animation-delay: 2s;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 24px;
+      animation: fade-in 1s ease-out;
+    }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-        .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        /* --- About Section --- */
-        #about .container {
-            max-width: 800px;
-        }
-        #about p {
-            font-size: 1.1rem;
-            text-align: center;
-            color: #495057;
-        }
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-glow), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        /* --- Skills Section --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
+    .hero .subtitle {
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
 
-        .skill-category h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
+    .hero .contact {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
 
-        .skill-category ul {
-            list-style: none;
-        }
+    .hero .contact a {
+      color: var(--primary);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
 
-        .skill-category li {
-            background-color: var(--white);
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            border-left: 4px solid var(--primary-color);
-            font-size: 0.95rem;
-        }
+    .hero .contact a:hover {
+      color: var(--primary-glow);
+    }
 
-        /* --- Projects Section --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 20px 32px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
 
-        .project-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
+    .btn:hover {
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-2px);
+    }
 
-        .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
 
-        .project-card p {
-            font-size: 1rem;
-            color: #6c757d;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
 
-        .project-card .tech-stack {
-            font-size: 0.85rem;
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
+    /* Section Styles */
+    section {
+      padding: 96px 24px;
+    }
 
-        .project-links {
-            display: flex;
-            gap: 10px;
-        }
-        .project-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        /* --- Experience Section --- */
-        .experience-item {
-            margin-bottom: 30px;
-        }
-        .experience-item h3 {
-            font-size: 1.4rem;
-            color: var(--secondary-color);
-        }
-        .experience-item .company {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        .experience-item .duration {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-bottom: 10px;
-        }
-        .experience-item ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-        .experience-item li {
-            position: relative;
-            margin-bottom: 8px;
-        }
-        .experience-item li::before {
-            content: '▸';
-            position: absolute;
-            left: -20px;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.125rem;
+      margin-bottom: 64px;
+    }
 
-        /* --- Contact Section --- */
-        #contact {
-            text-align: center;
-        }
-        #contact p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: #495057;
-        }
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .contact-links a {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--secondary-color);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius);
-            transition: all 0.3s ease;
-        }
-        .contact-links a:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-            border-color: var(--primary-color);
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            font-size: 0.9rem;
-        }
+    /* Card Styles */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.5s;
+    }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 2.2rem;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            section {
-                padding: 40px 0;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.1);
+    }
+
+    .card-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .gradient-1 { background: linear-gradient(135deg, var(--primary), var(--primary-glow)); }
+    .gradient-2 { background: linear-gradient(135deg, var(--accent), var(--primary)); }
+    .gradient-3 { background: linear-gradient(135deg, var(--primary-glow), var(--accent)); }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .card .btn {
+      width: 100%;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 12px 24px;
+      font-size: 1rem;
+    }
+
+    .card .btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Services */
+    .services {
+      background: rgba(220, 213, 218, 0.05);
+    }
+
+    .service-card {
+      text-align: center;
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+    }
+
+    /* Stats */
+    .stat-card {
+      text-align: center;
+      background: linear-gradient(135deg, var(--card), rgba(217, 232, 217, 0.1));
+    }
+
+    .stat-number {
+      font-size: clamp(3rem, 6vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .stat-label {
+      font-size: 1.25rem;
+      color: var(--muted);
+    }
+
+    /* Technologies */
+    .tech-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .tech-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .tech-card:hover .tech-icon {
+      transform: scale(1.1);
+    }
+
+    .tech-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* FAQ */
+    .faq-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover .faq-icon {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+      background: rgba(220, 213, 218, 0.05);
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--primary-glow);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding: 64px 24px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1>Asrorbek Botirov</h1>
+      <p class="subtitle">Full Stack Developer</p>
+      <p class="contact">
+        Telegram: <a href="https://t.me/asrorcodex" target="_blank" rel="noopener noreferrer">@asrorcodex</a>
+      </p>
+      <a href="#projects" class="btn">
+        Loyihalarni ko'rish
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </div>
+    
+    <div class="scroll-indicator">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
 
-    <header>
-        <div class="container header-content">
-            <!-- Rasm o'rniga stil berilgan harflar -->
-            <div style="font-size: 4rem; font-weight: 700; color: var(--primary-color); margin-bottom: 20px;">AB</div>
-            <h1>Asrorbek Botirov</h1>
-            <p>Frontend Dasturchi</p>
-            <p>Zamonaviy va foydalanuvchiga qulay veb-interfeyslar yaratishga ixtisoslashganman. Kod sifati, tezkorlik va estetika mening ishimning asosidir.</p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">Loyihalarni Ko'rish</a>
-                <a href="#contact" class="btn btn-secondary">Bog'lanish</a>
-            </div>
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Loyihalarim</h2>
+      <p class="section-subtitle">Professional web ilovalari va saytlar</p>
+      
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon gradient-1">
+            <svg viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3>Kodlarni ishlatish</h3>
+          <p>React, Node, MongoDB bilan platforma.</p>
+          <a href="https://kodlar.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn">
+            Loyihani ko'rish
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
         </div>
-    </header>
 
-    <main>
-        <section id="about">
-            <div class="container">
-                <h2>Mening Haqimda</h2>
-                <p>
-                    Men 5+ yillik tajribaga ega Frontend dasturchiman. Sof kod yozish, murakkab muammolarni yechish hamda foydalanuvchilar uchun ajoyib tajriba (UX) yaratish meni hayotimning ajralmas qismidir. JavaScript (ES6+), React va Vue.js kabi zamonaviy texnologiyalarda chuqur bilimga egaman.
-                </p>
-                <p style="margin-top: 15px;">
-                    Mening maqsadim - biznesingizning maqsadlariga erishishiga yordam beradigan, tez, ishonchli va estetik jihatdan jozibali veb-ilovalarni hayotga kechirish. Har bir loyiha bilan men to'liq mas'uliyat bilan yondashaman va eng yuqori natijaga erishishga harakat qilaman.
-                </p>
-            </div>
-        </section>
+        <div class="card">
+          <div class="card-icon gradient-2">
+            <svg viewBox="0 0 24 24">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+          </div>
+          <h3>Bar ber</h3>
+          <p>Barber uchun online yozilish.</p>
+          <a href="https://barberuchun.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn">
+            Loyihani ko'rish
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
 
-        <section id="skills">
-            <div class="container">
-                <h2>Texnik Mahoratlar</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Dasturlash Tillari</h3>
-                        <ul>
-                            <li>JavaScript (ES6+): Mutaxassis</li>
-                            <li>TypeScript: Yaxshi bilaman</li>
-                            <li>HTML5 & CSS3: Mutaxassis</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Frameworklar va Kutubxonalar</h3>
-                        <ul>
-                            <li>React.js & Next.js: Chuqur tajriba</li>
-                            <li>Vue.js & Nuxt.js: Yaxshi bilaman</li>
-                            <li>SASS / SCSS: Mutaxassis</li>
-                            <li>Redux, MobX: Holatni boshqarish</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Asboblar va Dasturlar</h3>
-                        <ul>
-                            <li>Git & GitHub: Versiyalarni boshqarish</li>
-                            <li>Webpack, Vite: Yig'ish (build) vositalari</li>
-                            <li>Figma: Dizayn bilan ishlash</li>
-                            <li>Jest, Cypress: Testlash</li>
-                            <li>REST API & GraphQL: Backend bilan integratsiya</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="card">
+          <div class="card-icon gradient-3">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+              <path d="M7 2v20"></path>
+              <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+            </svg>
+          </div>
+          <h3>Restarant uchun</h3>
+          <p>Sarvia restarani uchun sayt.</p>
+          <a href="https://sarvia.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn">
+            Loyihani ko'rish
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <section id="projects">
-            <div class="container">
-                <h2>Mening Loyihalarim</h2>
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <h3>Online Do'kon Platformasi</h3>
-                        <p>To'liq funksional e-commerce platforma. Foydalanuvchilar ro'yxatdan o'tishi, mahsulotlarni qidirishi, savatga qo'shishi va xavfsiz to'lov amalga oshirishi mumkin.</p>
-                        <div class="tech-stack">React.js, Redux Toolkit, Node.js, MongoDB, Stripe API</div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-primary" target="_blank">Loyihani Ko'rish</a>
-                            <a href="#" class="btn btn-secondary" target="_blank">GitHub</a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <h3>Ob-havo Bashorat Ilovasi</h3>
-                        <p>Minimalist va foydalanuvchiga qulay ob-havo bashorat ilovasi. Foydalanuvchi o'z shaharini kiritib, haftalik va soatlik ob-havo ma'lumotlarini ko'rishi mumkin.</p>
-                        <div class="tech-stack">Vue.js 3, Composition API, OpenWeatherMap API</div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-primary" target="_blank">Loyihani Ko'rish</a>
-                            <a href="#" class="btn btn-secondary" target="_blank">GitHub</a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <h3>Ma'lumotlarni Vizuallashtirish Paneli</h3>
-                        <p>Katta hajmdagi ma'lumotlarni grafiklar va diagrammalar yordamida tushunarli qilib ko'rsatuvchi boshqaruv paneli. Real vaqt rejimida ma'lumotlar yangilanib turadi.</p>
-                        <div class="tech-stack">Next.js, TypeScript, Material-UI, Chart.js</div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-primary" target="_blank">Loyihani Ko'rish</a>
-                            <a href="#" class="btn btn-secondary" target="_blank">GitHub</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+  <!-- Services Section -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title">Xizmatlar</h2>
+      
+      <div class="grid">
+        <div class="card service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2h.01"></path>
+              <path d="M2 12h.01"></path>
+              <path d="M12 22h.01"></path>
+              <path d="M22 12h.01"></path>
+              <path d="M12 6a6 6 0 0 1 6 6"></path>
+              <path d="M6 12a6 6 0 0 1 6-6"></path>
+              <path d="M12 18a6 6 0 0 1-6-6"></path>
+              <path d="M18 12a6 6 0 0 1-6 6"></path>
+            </svg>
+          </div>
+          <h3>Frontend</h3>
+          <p>HTML, CSS, JS, React</p>
+        </div>
 
-        <section id="experience">
-            <div class="container">
-                <h2>Ish Tajribasi</h2>
-                <div class="experience-item">
-                    <h3>Frontend Dasturchi</h3>
-                    <span class="company">"Digital Solutions" MCHJ, Toshkent</span>
-                    <div class="duration">2020-yil - Hozirgi kunga qadar</div>
-                    <ul>
-                        <li>Kompaniyaning asosiy mahsuloti bo'lmish CRM tizimining frontend qismini React.js yordamida qayta qurish.</li>
-                        <li>Yangi loyihalar uchun komponentlar kutubxonasini yaratish va uni hujjatlashtirish.</li>
-                        <li>Junior dasturchilarga mentorlik qilish.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <div class="card service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Backend</h3>
+          <p>Node, Express, MongoDB</p>
+        </div>
 
-        <section id="contact">
-            <div class="container">
-                <h2>Bog'lanish</h2>
-                <p>Yangi loyiha yoki hamkorlik to'g'risida muzokaralar uchun har doim tayyorman. Quyidagi yo'llar bilan menga murojaat qiling.</p>
-                <div class="contact-links">
-                    <a href="mailto:asrorbek.botirov@example.com">Email</a>
-                    <a href="https://t.me/asrorbek_dev" target="_blank">Telegram</a>
-                    <a href="https://github.com/asrorbek-botirov" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/asrorbek-botirov" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-        </section>
-    </main>
+        <div class="card service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+              <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+              <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+            </svg>
+          </div>
+          <h3>Deploy</h3>
+          <p>Netlify, Render</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2024 Asrorbek Botirov. Barcha huquqlar himoyalangan.</p>
-    </footer>
+  <!-- Stats Section -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Portfolio</h2>
+      
+      <div class="grid">
+        <div class="card stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Loyihalar</div>
+        </div>
 
+        <div class="card stat-card">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Mijozlar</div>
+        </div>
+
+        <div class="card stat-card">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Yil tajriba</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies Section -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title">Texnologiyalar</h2>
+      
+      <div class="grid">
+        <div class="card tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>HTML</h3>
+            <p>Semantik</p>
+          </div>
+        </div>
+
+        <div class="card tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2h.01"></path>
+              <path d="M2 12h.01"></path>
+              <path d="M12 22h.01"></path>
+              <path d="M22 12h.01"></path>
+              <path d="M12 6a6 6 0 0 1 6 6"></path>
+              <path d="M6 12a6 6 0 0 1 6-6"></path>
+            </svg>
+          </div>
+          <div>
+            <h3>CSS</h3>
+            <p>Grid, Flex</p>
+          </div>
+        </div>
+
+        <div class="card tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <h3>JS</h3>
+            <p>ES6+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      
+      <div class="grid">
+        <div class="card">
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Narxi?</h3>
+          <p style="font-size: 1.125rem;">Loyiha bo'yicha</p>
+        </div>
+
+        <div class="card">
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>Muddati?</h3>
+          <p style="font-size: 1.125rem;">1-4 hafta</p>
+        </div>
+
+        <div class="card">
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v2a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h3Z"></path>
+            </svg>
+          </div>
+          <h3>Qo'llab-quvvatlash?</h3>
+          <p style="font-size: 1.125rem;">24/7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Asrorbek Botirov. Barcha huquqlar himoyalangan.</p>
+      <p style="margin-top: 8px; font-size: 0.875rem;">
+        Telegram: <a href="https://t.me/asrorcodex" target="_blank" rel="noopener noreferrer">@asrorcodex</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
