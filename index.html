@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asrorbek Botirov - Frontend Dasturchi Portfeli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Umumiy Stil --- */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #343a40;
+            --background-color: #f8f9fa;
+            --text-color: #212529;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* --- About Section --- */
+        #about .container {
+            max-width: 800px;
+        }
+        #about p {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #495057;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            background-color: var(--white);
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 0.95rem;
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .project-card .tech-stack {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+        .project-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- Experience Section --- */
+        .experience-item {
+            margin-bottom: 30px;
+        }
+        .experience-item h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+        }
+        .experience-item .company {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .experience-item .duration {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .experience-item ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .experience-item li {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .experience-item li::before {
+            content: '▸';
+            position: absolute;
+            left: -20px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            text-align: center;
+        }
+        #contact p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #495057;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact-links a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+        .contact-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            section {
+                padding: 40px 0;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <!-- Rasm o'rniga stil berilgan harflar -->
+            <div style="font-size: 4rem; font-weight: 700; color: var(--primary-color); margin-bottom: 20px;">AB</div>
+            <h1>Asrorbek Botirov</h1>
+            <p>Frontend Dasturchi</p>
+            <p>Zamonaviy va foydalanuvchiga qulay veb-interfeyslar yaratishga ixtisoslashganman. Kod sifati, tezkorlik va estetika mening ishimning asosidir.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">Loyihalarni Ko'rish</a>
+                <a href="#contact" class="btn btn-secondary">Bog'lanish</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2>Mening Haqimda</h2>
+                <p>
+                    Men 5+ yillik tajribaga ega Frontend dasturchiman. Sof kod yozish, murakkab muammolarni yechish hamda foydalanuvchilar uchun ajoyib tajriba (UX) yaratish meni hayotimning ajralmas qismidir. JavaScript (ES6+), React va Vue.js kabi zamonaviy texnologiyalarda chuqur bilimga egaman.
+                </p>
+                <p style="margin-top: 15px;">
+                    Mening maqsadim - biznesingizning maqsadlariga erishishiga yordam beradigan, tez, ishonchli va estetik jihatdan jozibali veb-ilovalarni hayotga kechirish. Har bir loyiha bilan men to'liq mas'uliyat bilan yondashaman va eng yuqori natijaga erishishga harakat qilaman.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Texnik Mahoratlar</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Dasturlash Tillari</h3>
+                        <ul>
+                            <li>JavaScript (ES6+): Mutaxassis</li>
+                            <li>TypeScript: Yaxshi bilaman</li>
+                            <li>HTML5 & CSS3: Mutaxassis</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frameworklar va Kutubxonalar</h3>
+                        <ul>
+                            <li>React.js & Next.js: Chuqur tajriba</li>
+                            <li>Vue.js & Nuxt.js: Yaxshi bilaman</li>
+                            <li>SASS / SCSS: Mutaxassis</li>
+                            <li>Redux, MobX: Holatni boshqarish</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Asboblar va Dasturlar</h3>
+                        <ul>
+                            <li>Git & GitHub: Versiyalarni boshqarish</li>
+                            <li>Webpack, Vite: Yig'ish (build) vositalari</li>
+                            <li>Figma: Dizayn bilan ishlash</li>
+                            <li>Jest, Cypress: Testlash</li>
+                            <li>REST API & GraphQL: Backend bilan integratsiya</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Mening Loyihalarim</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <h3>Online Do'kon Platformasi</h3>
+                        <p>To'liq funksional e-commerce platforma. Foydalanuvchilar ro'yxatdan o'tishi, mahsulotlarni qidirishi, savatga qo'shishi va xavfsiz to'lov amalga oshirishi mumkin.</p>
+                        <div class="tech-stack">React.js, Redux Toolkit, Node.js, MongoDB, Stripe API</div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary" target="_blank">Loyihani Ko'rish</a>
+                            <a href="#" class="btn btn-secondary" target="_blank">GitHub</a>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <h3>Ob-havo Bashorat Ilovasi</h3>
+                        <p>Minimalist va foydalanuvchiga qulay ob-havo bashorat ilovasi. Foydalanuvchi o'z shaharini kiritib, haftalik va soatlik ob-havo ma'lumotlarini ko'rishi mumkin.</p>
+                        <div class="tech-stack">Vue.js 3, Composition API, OpenWeatherMap API</div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary" target="_blank">Loyihani Ko'rish</a>
+                            <a href="#" class="btn btn-secondary" target="_blank">GitHub</a>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <h3>Ma'lumotlarni Vizuallashtirish Paneli</h3>
+                        <p>Katta hajmdagi ma'lumotlarni grafiklar va diagrammalar yordamida tushunarli qilib ko'rsatuvchi boshqaruv paneli. Real vaqt rejimida ma'lumotlar yangilanib turadi.</p>
+                        <div class="tech-stack">Next.js, TypeScript, Material-UI, Chart.js</div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary" target="_blank">Loyihani Ko'rish</a>
+                            <a href="#" class="btn btn-secondary" target="_blank">GitHub</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2>Ish Tajribasi</h2>
+                <div class="experience-item">
+                    <h3>Frontend Dasturchi</h3>
+                    <span class="company">"Digital Solutions" MCHJ, Toshkent</span>
+                    <div class="duration">2020-yil - Hozirgi kunga qadar</div>
+                    <ul>
+                        <li>Kompaniyaning asosiy mahsuloti bo'lmish CRM tizimining frontend qismini React.js yordamida qayta qurish.</li>
+                        <li>Yangi loyihalar uchun komponentlar kutubxonasini yaratish va uni hujjatlashtirish.</li>
+                        <li>Junior dasturchilarga mentorlik qilish.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Bog'lanish</h2>
+                <p>Yangi loyiha yoki hamkorlik to'g'risida muzokaralar uchun har doim tayyorman. Quyidagi yo'llar bilan menga murojaat qiling.</p>
+                <div class="contact-links">
+                    <a href="mailto:asrorbek.botirov@example.com">Email</a>
+                    <a href="https://t.me/asrorbek_dev" target="_blank">Telegram</a>
+                    <a href="https://github.com/asrorbek-botirov" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/asrorbek-botirov" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Asrorbek Botirov. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+</body>
+</html>
